@@ -1,5 +1,9 @@
 class FruitMachine
+  def initialize
+    @slots = ["Black", "White", "Green", "Yellow"]
+  end
+  
   def display
-    ["Black", "White", "Green", "Yellow"]
+    @slots.join(" | ")
   end
 end
