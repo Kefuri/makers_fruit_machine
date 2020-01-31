@@ -1,5 +1,5 @@
 class FruitMachine
-
+  SINGLE_PLAY_FEE = 5
   attr_reader :game_credits
 
   def initialize
@@ -14,6 +14,6 @@ class FruitMachine
   
   def insert(cash)
     @money += cash
-    @game_credits += cash / 5
+    @game_credits += cash / SINGLE_PLAY_FEE
   end
 end
