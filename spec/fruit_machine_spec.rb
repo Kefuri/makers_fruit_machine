@@ -1,15 +1,23 @@
 require 'fruit_machine'
 
 describe FruitMachine do
-  describe "#display" do
+  describe "#pull_lever" do
     it "should return slots" do
-      allow(subject).to receive(:display).and_return("Black | White | Green | Yellow")
-      expect(subject.display).to eq("Black | White | Green | Yellow")
+      subject.insert(5)
+      allow(subject).to receive(:pull_lever).and_return("Black | White | Green | Yellow")
+      expect(subject.pull_lever).to eq("Black | White | Green | Yellow")
     end
 
     it "randomly displays coloured slots" do
-      allow(subject).to receive(:display).and_return("White | Green | Blue | Green")
-      expect(subject.display).to eq("White | Green | Blue | Green")
+      subject.insert(5)
+      allow(subject).to receive(:pull_lever).and_return("White | Green | Blue | Green")
+      expect(subject.pull_lever).to eq("White | Green | Blue | Green")
+    end
+    it "should deduct a credit when pulling the lever" do
+      subject.insert(5)
+      expect(subject.game_credits).to eq(1)
+      subject.pull_lever
+      expect(subject.game_credits).to eq(0)
     end
   end
   describe "#insert" do
